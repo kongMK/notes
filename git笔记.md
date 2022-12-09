@@ -185,10 +185,11 @@ git log -n --pretty=format:"%h | %an | %ar | %s"
 git log --pretty=oneline
 
 # 根据提交时的 ID 回退到指定版本
-git rest --hard <CommitID>
+git reset --hard <CommitID>
 
-# 版本以及回退后使用 git log 命令是不会展示所有提交历史
-git reflog --pretty=oneline # 展示所有历史包括回退前的
+# 版本回退后使用 git log 命令是不会展示所有提交历史
+git reflog --pretty=oneline # 展示所有历史
 
-#     退
+# 通过 git reflog 命令找到回退前的版本回退到回退前的版本
+git reset --hard <CommitID>
 ```
