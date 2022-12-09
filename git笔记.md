@@ -136,7 +136,7 @@ git rm --cached 文件名
 * glob 模式  
 > `*`匹配零个或者多个字符  
   `[0-9a-z]`匹配任意一个列在中括号里的字符  
-  `?`中匹配一个任意字符  
+  `?`匹配一个任意字符  
   `**`表示匹配任意中间目录
 ```.gitignore
 # 忽略所有以 .a 结尾的文件
@@ -158,3 +158,37 @@ doc/*.txt
 doc/**/*.pdf
 ```
 
+* 提交历史  
+```powershell
+# 按时间倒序列出所有的提交历史
+git log
+
+# 展示最新的 n 条提交历史
+git log -n
+
+# 展示最新的 n 条提交历史, 一行展示一条历史
+git log -n --pretty=oneline
+
+# 展示最新的 n 条提交历史，一行展示一条历史，自定义输出格式
+<#
+  %h 提交的简写哈希值
+  %an 作者名字
+  %ar 作者修改日期
+  %s 提交说明
+#>
+git log -n --pretty=format:"%h | %an | %ar | %s"
+```
+ 
+* 版本回退
+```powershell
+# 查询提交历史
+git log --pretty=oneline
+
+# 根据提交时的 ID 回退到指定版本
+git rest --hard <CommitID>
+
+# 版本以及回退后使用 git log 命令是不会展示所有提交历史
+git reflog --pretty=oneline # 展示所有历史包括回退前的
+
+#
+```
