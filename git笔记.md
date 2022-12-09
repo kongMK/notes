@@ -190,5 +190,5 @@ git rest --hard <CommitID>
 # 版本以及回退后使用 git log 命令是不会展示所有提交历史
 git reflog --pretty=oneline # 展示所有历史包括回退前的
 
-# 
+#     退
 ```
