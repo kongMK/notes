@@ -110,7 +110,7 @@ git checkout -- 文件名
 # 移除暂存区中的文件
 git reset HEAD 文件名
 
-# 跳过暂存区，直接提交到仓库
+# 跳过暂存区，直接提交到仓库, 文件未跟踪时不可以使用
 git commit -a -m '描述'
 ```
 
@@ -190,5 +190,5 @@ git rest --hard <CommitID>
 # 版本以及回退后使用 git log 命令是不会展示所有提交历史
 git reflog --pretty=oneline # 展示所有历史包括回退前的
 
-#
+# 
 ```
