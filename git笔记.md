@@ -112,6 +112,13 @@ git reset HEAD 文件名
 
 # 跳过暂存区，直接提交到仓库
 git commit -a -m '描述'
+```
 
+* 移除文件  
+```powershell
+# 从git仓库和工作区中同时移除
+git rm -f 文件名
 
+# 仅从git仓库中移除
+git rm --cached 文件名
 ```
