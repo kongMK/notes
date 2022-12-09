@@ -190,6 +190,29 @@ git reset --hard <CommitID>
 # 版本回退后使用 git log 命令是不会展示所有提交历史
 git reflog --pretty=oneline # 展示所有历史
 
-# 通过 git reflog 命令找到回退前的版本回退到回退前的版本
+# 通过 git reflog 命令找到回退前的版本ID回退到回退前的版本
 git reset --hard <CommitID>
 ```
+
+## 开源（开放源代码 Open source code）
+代码是公开，任何人都可以查看、修改、使用。  
+
+* 开源许可协议(Open Source License)  
+> 开源并不是意味完全没有限制，为了限制使用者的使用范围和保护作者的权力，每个开源项目都应该遵守**开源许可协议**。
+
+* 常见的5中开源许可协议  
+1. BSD(Berkeley Software Distribution)
+2. Apache Licence 2.0
+3. **GPL**(GNU General Public License)
+> 具有传染性的一种开源协议，不允许修改后和衍生的代码作为闭源的商业软件发布和销售  
+  最著名的软件项目：Linux
+4. LGPL(GNU Lesser General Public License)
+5. **MIT**(Massachusetts Institute of Technology,MIT)
+> 是目前限制最少的协议，唯一条件：在修改后的代码或发行包中，必须包含原作者的许可信息  
+  软件项目: jQuery、Node.js
+
+* 开源项目托管平台用于免费存放开源项目代码的网站。  
+目前世界上较出名的开源项目托管平台  
+1. Github(全球最牛的开源项目托管平台)
+2. gitlab(代码私有性支持较好，因此企业用户较多)
+3. gitee(码云，国产的开源项目托管平台)
