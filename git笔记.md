@@ -110,4 +110,8 @@ git checkout -- 文件名
 # 移除暂存区中的文件
 git reset HEAD 文件名
 
+# 跳过暂存区，直接提交到仓库
+git commit -a -m '描述'
+
+
 ```
