@@ -216,3 +216,19 @@ git reset --hard <CommitID>
 1. Github(全球最牛的开源项目托管平台)
 2. gitlab(代码私有性支持较好，因此企业用户较多)
 3. gitee(码云，国产的开源项目托管平台)
+
+* Github 访问远程仓库的两种方式  
+1. HTTPS: 零配置, 但是每次访问仓库时，需要验证身份。
+2. SSH: 需要进行额外的配置。但是配成功后，每次访问仓库时，不需要验证身份。
+
+> HTTPS
+```powershell
+# github 远程仓库进行关联
+git remote add origin https://github.com/kongMK/proto.git
+
+# 创建并切换到 main 分支
+git branch -M main
+
+# push 本地仓库到远程仓库
+git push -u origin main
+```
