@@ -1,2 +1,3 @@
 # 忽略当前目录下 test 文件夹所有文件
 /test/
+/test.txt

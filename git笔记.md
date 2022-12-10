@@ -108,7 +108,7 @@ git checkout -- 文件名
 # 移除暂存区中的文件
 git reset HEAD 文件名
 
-# 跳过暂存区直接提交到 Git仓库, 文件未被跟踪时不用
+# 跳过暂存区直接提交到 Git仓库, 文件未被跟踪时不可用
 git commit -a -m '描述'
 ```
 
@@ -311,7 +311,7 @@ git merge C
 ```
 * 合并文件时发生冲突
 ```powershell
-# 我们需要打开冲突的文件手动解决, 最后执行 git add '文件' 命令告诉git冲突已经解决
+# 我们需要打开冲突的文件手动解决, 最后执行 git add '文件' 命令告诉 git冲突已经解决
 git add . # 冲突已解决
 git commit -m '描述' # 提交
 ```
