@@ -229,13 +229,13 @@ HTTPS
 # github 远程仓库进行关联
 git remote add origin https://github.com/kongMK/proto.git
 
-# 创建并切换到 main 分支
+# -M 移动/重命名分支，即使目标存在
 git branch -M main
 
 <# 
   push 本地仓库到远程仓库
   第一次push需要填写完整的命令。
-  后面可以使用 git push 同步远程仓库
+  后面可以使用 git push 命令同步远程仓库
 #>
 git push -u origin main
 ```
@@ -249,7 +249,7 @@ SSH key
 > * 生成SSH key  
 > id_rsa 和 id_rsa.pub 存放在 C:\Users\用户名文件\\.ssh目录  
 ```powershell
-# 生成SSH keky
+# 生成SSH key
 ssh-keygen -t rsa -b 4096 -C "github邮箱"
 ```
 
@@ -265,7 +265,7 @@ ssh -T git@github.com
 ```powershell
 # 与 github 远程仓库关联
 git remote add origin git@github.com:kongMK/proto_ssh.git
-# 创建分支 main
+# -M 移动/重命名分支，即使目标存在
 git branch -M main
 # 同步本地仓库到远程仓库
 git push -u origin main
@@ -278,4 +278,33 @@ git clone 远程仓库的地址
 ```
 
 * 分支(branch)  
-> 
+> 分支就像平行宇宙，分支与分支之间互不干扰。  
+  在多人协同开发时提高协同开发的体验，建议每个开发者都基于分支进行功能的开发。  
+
+> * 主分支(master)
+> 初始化本地 Git 仓库时，git会自动创建一个名字叫 master 的分支。  
+  主分支主要用来保存和记录整个项目已完成的功能代码，因此不允许程序员直接在主分支上直接修改代码。
+
+> * 功能分支 
+> 功能分支值得是专门用来开发新功能的分支，他是从 master 临时分叉出来的。  
+  新功能开发并测试完成后，最终需要合并到 master 主分支上。
+
+```powershell
+# 列出分支列表
+git branch # git branch --list; --list 可以简写为 -l
+
+# 基于当前的分支创建分支，新分支的代码和当前的代码一样
+git branch 分支名
+
+# 切换分支
+git checkout 分支名
+
+# 创建并切换到新分支
+git checkout -b 分支名
+```
+* 分支合并
+```powershell
+# 如果需要把 C 分支合并到 A 分支, 我们需要切换先到 A 分支再进行合并
+git checkout A 
+git merge C
+```
