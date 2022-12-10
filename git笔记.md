@@ -305,11 +305,15 @@ git checkout -b 分支名
 
 * 分支合并
 ```powershell
-# 如果把 C 分支合并到 A 分支, 合并时需要先切换到 A 分支再进行合并
+# 如果把 C 分支合并到 A 分支, 需要先切换到 A 分支再进行合并
 git checkout A 
 git merge C
-
-# 合并时发生内容冲突，
+```
+* 合并文件时发生冲突
+```powershell
+# 我们需要打开冲突的文件手动解决, 最后执行 git add '文件' 命令告诉git冲突已经解决
+git add . # 冲突已解决
+git commit -m '描述' # 提交
 ```
 
 * 删除分支
