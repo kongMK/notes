@@ -4,7 +4,7 @@
 
 ## 版本控制系统的分类  
 1. **本地**版本控制系统  
-特点：使用软件来记录文件的不同版本，提高了工作效率，减低手动维护版本的出错率。
+特点：使用软件来记录文件的不同版本，提高了工作效率，减低手动维护版本的出错率。  
 缺点：单机运行，不支持多人协作开发，版本数据库故障，所有历史更新记录会丢失。
 
 
@@ -23,17 +23,14 @@
 Git 是一个开源的分布式版本控制系统，目前最先进、最流行的版本控制系统。  
 
 * 高性能、高可用性  
-git直接记录快照，而非差异比较  
 > 传统的版本控制系统是基于 差异比较 的版本控制，它们存储的是 一组基础文件和每个文件随时间逐步累计的差异。  
+> Git是记录快照在原有文件版本的基础上重新生成一份新的文件，类似备份。为了效率，如果文件没有修改，Git不再重新存储该文件，而是只保留一个链接指向之前存储的文件。
 
-> Git记录快照在原有文件版本的基础上重新生成一份新的文件，类似备份。为了效率，如果文件没有修改，Git不再重新存储该文件，而是只保留一个链接指向之前存储的文件。
-
-近乎所有操做都是本地执行  
 > 在Git中绝大多数操作都是只需要访问本地文件和资源，一般不需要来自网络上其他计算机的信息。  
 断网后依旧可以在本地对项目进行版本管理  
 联网后，把本地修改的记录同步到云端服务器即可  
 
-* Git 管理的项目，拥有三个区域，分别是**工作区**、**暂存区**、**Git仓库**  
+* Git 管理的项目拥有三个区域，分别是**工作区**、**暂存区**、**Git仓库**  
 
 * Git 中的三种状态  
  **已修改**(modified): 表示修改了文件，但是修改结果还没放到**暂存区**  
@@ -42,7 +39,7 @@ git直接记录快照，而非差异比较
 
 * [官网]<https://git-scm.com/downloads>
 
-## 配置
+## 全局配置
 1. 配置用户信息  
 ```powershell
 git config --global user.name "用户名"
@@ -64,21 +61,22 @@ git help config
 git config -h
 ```
 
-# 获取仓库
-1. 将尚未进行版本控制的本地目录转换为Git仓库  
-2. 从其服务器克隆一个已存在的Git仓库  
+# 获取仓库两种方式
+1. 将一个尚未进行版本控制的本地目录转换为Git仓库  
+2. 从其它服务器克隆一个已存在的Git仓库  
 ```powershell
 <# 
-  初始化仓库，git init 会创建一个 .git 的隐藏目录，这个目录是就是当前目录的Git仓库,里面包含了初始的必要文件，这些文件是Git仓库的必要组成部分。
+  初始化仓库，git init 会创建一个 .git 的隐藏目录。
+  这个目录是就是当前目录的Git仓库，里面包含了初始的必要文件，这些文件是Git仓库的必要组成部分。
 #>
 git init
 ```
 
-* 工作区中文件的4种状态分为两类  
-1. 未被git管理:
+* 工作区中文件的4种状态  
+1. 未被git管理类:
 > 未跟踪(Untracked)：不被git所管理
 
-2. 已被git管理:
+2. 已被git管理类:
 > 未修改(Unmodified): 工作区中文件的内容和**git仓库**中文件的内容一致。
 
 > 已修改(Modified): 工作区中文件的内容和**git仓库**中文件的内容不一致。
@@ -103,28 +101,28 @@ git commit -m "对提交描述"
 
 <# 
   撤销对文件的修改，还原成Git仓库中所保存的版本。
-  所有修改会丢失无法恢复，请谨慎操作。
+  所有修改会丢失无法恢复，请谨慎操作！
 #>
 git checkout -- 文件名
 
 # 移除暂存区中的文件
 git reset HEAD 文件名
 
-# 跳过暂存区，直接提交到仓库, 文件未跟踪时不可以使用
+# 跳过暂存区直接提交到 Git仓库, 文件未被跟踪时不用
 git commit -a -m '描述'
 ```
 
 * 移除文件  
 ```powershell
-# 从git仓库和工作区中同时移除
+# 从 git仓库和工作区中同时移除
 git rm -f 文件名
 
-# 仅从git仓库中移除
+# 仅从 git仓库中移除
 git rm --cached 文件名
 ```
 
 * 忽略文件  
-一般我们都会有一些无需纳入Git管理的文件，也不希望它总是出现在未跟踪文件列表中。  
+我们一般都会有一些无需纳入Git管理的文件，也不希望它总是出现在未跟踪文件列表中。  
 在这种情况下，我们可以创建一个.gitignore配置文件，列出要忽略的文件匹配模式。  
 > .gitignore 格式规范   
 > 1. 以`#`开头是注释
@@ -133,7 +131,7 @@ git rm --cached 文件名
 > 4. 以`!`开头表示取反
 > 5. 可以使用**glob模式**进行文件和文件夹的匹配(glob是简化的正则表达式)
 
-* glob 模式  
+> * glob 模式  
 > `*`匹配零个或者多个字符  
   `[0-9a-z]`匹配任意一个列在中括号里的字符  
   `?`匹配一个任意字符  
@@ -142,13 +140,13 @@ git rm --cached 文件名
 # 忽略所有以 .a 结尾的文件
 *.a
 
-# 但跟踪所有 lib.a, 因为前面已经定义了 *.a 
+# 跟踪所有 lib.a, !表示取反 
 !lib.a
 
 # 忽略当前目录下的 TODO 文件
 /TODO
 
-# 忽略所有 build 目录下的文件
+# 忽略所有 build 目录及其文件
 build/
 
 # 忽略 doc/notes.txt, 但不忽略 doc/server/arch.txt
@@ -175,6 +173,7 @@ git log -n --pretty=oneline
   %an 作者名字
   %ar 作者修改日期
   %s 提交说明
+  | 分隔符可任意更换
 #>
 git log -n --pretty=format:"%h | %an | %ar | %s"
 ```
@@ -190,7 +189,7 @@ git reset --hard <CommitID>
 # 版本回退后使用 git log 命令是不会展示所有提交历史
 git reflog --pretty=oneline # 展示所有历史
 
-# 通过 git reflog 命令找到回退前的版本ID回退到回退前的版本
+# 通过 git reflog 命令找到回退前的版本ID
 git reset --hard <CommitID>
 ```
 
@@ -201,27 +200,31 @@ git reset --hard <CommitID>
 > 开源并不是意味完全没有限制，为了限制使用者的使用范围和保护作者的权力，每个开源项目都应该遵守**开源许可协议**。
 
 * 常见的5中开源许可协议  
-1. BSD(Berkeley Software Distribution)
-2. Apache Licence 2.0
-3. **GPL**(GNU General Public License)
+> 1. BSD(Berkeley Software Distribution)
+
+> 2. Apache Licence 2.0
+
+> 3. **GPL**(GNU General Public License)
 > 具有传染性的一种开源协议，不允许修改后和衍生的代码作为闭源的商业软件发布和销售  
   最著名的软件项目：Linux
-4. LGPL(GNU Lesser General Public License)
-5. **MIT**(Massachusetts Institute of Technology,MIT)
+
+> 4. LGPL(GNU Lesser General Public License)
+
+> 5. **MIT**(Massachusetts Institute of Technology,MIT)
 > 是目前限制最少的协议，唯一条件：在修改后的代码或发行包中，必须包含原作者的许可信息  
   软件项目: jQuery、Node.js
 
 * 开源项目托管平台用于免费存放开源项目代码的网站。  
-目前世界上较出名的开源项目托管平台  
-1. Github(全球最牛的开源项目托管平台)
-2. gitlab(代码私有性支持较好，因此企业用户较多)
-3. gitee(码云，国产的开源项目托管平台)
+> 目前世界上较出名的开源项目托管平台  
+> 1. Github(全球最牛的开源项目托管平台)
+> 2. gitlab(代码私有性支持较好，因此企业用户较多)
+> 3. gitee(码云，国产的开源项目托管平台)
 
 * Github 访问远程仓库的两种方式  
-1. HTTPS: 零配置, 但是每次访问仓库时，需要验证身份。
-2. SSH: 需要进行额外的配置。但是配成功后，每次访问仓库时，不需要验证身份。
+> 1. HTTPS: 零配置, 但是每次访问仓库时，需要验证身份。
+> 2. SSH: 需要进行额外的配置。但是配置成功后不需要每次访问仓库都要验证身份。
 
-> HTTPS
+HTTPS
 ```powershell
 # github 远程仓库进行关联
 git remote add origin https://github.com/kongMK/proto.git
@@ -229,6 +232,50 @@ git remote add origin https://github.com/kongMK/proto.git
 # 创建并切换到 main 分支
 git branch -M main
 
-# push 本地仓库到远程仓库
+<# 
+  push 本地仓库到远程仓库
+  第一次push需要填写完整的命令。
+  后面可以使用 git push 同步远程仓库
+#>
 git push -u origin main
 ```
+
+SSH key  
+实现本地仓库和Github之间免登录加密数据传输
+> * SSH key 由两部分组成
+> 1. id_rsa 私钥文件，存放于客户端
+> 2. id_rsa.pub 公钥文件，需要配置到Github
+
+> * 生成SSH key  
+> id_rsa 和 id_rsa.pub 存放在 C:\Users\用户名文件\\.ssh目录  
+```powershell
+# 生成SSH keky
+ssh-keygen -t rsa -b 4096 -C "github邮箱"
+```
+
+> * 配置SSH key
+> 复制生成的 id_rsa.pub 文件的内容  
+  粘贴到Github头像 -> Settings -> SSH and GPK Keys -> New SSH Key -> key
+```powershell
+# 验证 github 的 SSH key 配置是否成功
+ssh -T git@github.com
+```
+
+* SSH 同步远程仓库
+```powershell
+# 与 github 远程仓库关联
+git remote add origin git@github.com:kongMK/proto_ssh.git
+# 创建分支 main
+git branch -M main
+# 同步本地仓库到远程仓库
+git push -u origin main
+```
+
+* 克隆远程仓库到本地
+```powershell
+# 克隆远程仓库到本地
+git clone 远程仓库的地址
+```
+
+* 分支(branch)  
+> 
