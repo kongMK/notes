@@ -67,7 +67,7 @@ git config -h
 ```powershell
 <# 
   初始化仓库，git init 会创建一个 .git 的隐藏目录。
-  这个目录是就是当前目录的Git仓库，里面包含了初始的必要文件，这些文件是Git仓库的必要组成部分。
+  这个目录是就是当前目录3的Git仓库，里面包含了初始的必要文件，这些文件是Git仓库的必要组成部分。
 #>
 git init
 ```
@@ -302,9 +302,18 @@ git checkout 分支名
 # 创建并切换到新分支
 git checkout -b 分支名
 ```
+
 * 分支合并
 ```powershell
-# 如果需要把 C 分支合并到 A 分支, 我们需要切换先到 A 分支再进行合并
+# 如果把 C 分支合并到 A 分支, 合并时需要先切换到 A 分支再进行合并
 git checkout A 
 git merge C
+
+# 合并时发生内容冲突，
+```
+
+* 删除分支
+```powershell
+# 删除本地的分支, 不可以删除当前所在的分支
+git branch -d 分支名
 ```
