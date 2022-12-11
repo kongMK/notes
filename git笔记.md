@@ -105,7 +105,7 @@ git commit -m "对提交描述"
 #>
 git checkout -- 文件名
 
-# 移除暂存区中的文件
+# 回退暂存区中的文件
 git reset HEAD 文件名
 
 # 跳过暂存区直接提交到 Git仓库, 文件未被跟踪时不可用
@@ -114,10 +114,10 @@ git commit -a -m '描述'
 
 * 移除文件  
 ```powershell
-# 从 git仓库和工作区中同时移除
+# 从工作区、git仓库中同时移除
 git rm -f 文件名
 
-# 仅从 git仓库中移除
+# 从暂存区和git仓库中移除
 git rm --cached 文件名
 ```
 
