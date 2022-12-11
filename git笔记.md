@@ -344,3 +344,9 @@ git checkout 远程分支名
 # 从远程仓库拉取当前分支的最新代码
 git pull
 ```
+
+* 删除远程分支
+```powershell
+# 删除远程分支
+git push 远程仓库名 --delete 远程分支名
+```
