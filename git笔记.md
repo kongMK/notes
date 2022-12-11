@@ -334,5 +334,8 @@ git push -u 远程仓库的别名 分支名
 
 # 查看远程仓库的分支列表 远程仓库名默认 origin
 git remote show 远程仓库的名称
+
+# 从远程仓库下载分支
+git checkout -b 远程分支名:本地分支名
 ```
 
