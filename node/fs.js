@@ -7,7 +7,7 @@ fs.readFile(__dirname + '/二级目录/成绩.txt', 'utf-8', function(err, data)
 	const arr = data.split(' '); // 将字符串分割成数组，在空格位置分割
 	const newArr = [];
 	arr.forEach( (item) =>{
-		newArr.push(item.replace('=', ': ')); // 将arr数组每一项的 = 替换成 : , 加到 newArr数组 
+		newArr.push(item.replace('=', ': ')); // 将arr数组每一项的 = 替换成 : 加到 newArr数组 
 	})
 	
 	const newData = newArr.join('\r\n')
