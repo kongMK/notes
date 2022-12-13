@@ -1,0 +1,39 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <script src="./jquery.js"></script>
+  </head>
+  <body>
+    <h1>首页</h1>
+    <button id="btnLogout">退出登录</button>
+    <script>
+      $(function() {
+        // 页面加载完成，自动发起请求，获取用户名
+        $.get('/api/username', function(res) {
+          // status 为 0 表示成功获取
+          if(res.status !== 0) {
+            alert('尚为登录，请登录后再执行操作');
+            location.href = './login.html';
+          } else {
+            alert('欢迎你:' + res.username)
+          }
+        })
+
+        // 点击按钮退出登录
+        $('#btnLogout').on('click', function(res) {
+          // 发起 POST 请求，退出登录
+          $.post('/api/logout', function(res) {
+            if(res.status === 0) {
+              // 如果 status 为 0，则退出成功
+              location.href = './login.html'
+            }
+          })
+        })
+      })
+    </script>
+  </body>
+  </html>

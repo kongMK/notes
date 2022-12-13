@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跨域</title>
+  <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+  <div>
+    <button id="btnGET">GET</button>
+    <button id="btnPOST">POST</button>
+    <button id="btnDELETE">DELETE</button>
+    <button id="btnJSONP">JSONP</button>
+  </div>
+  <script>
+    $(function() {
+
+      $('#btnGET').on('click', function() {
+        $.ajax({
+          type: 'GET',
+          url: 'http://127.0.0.1/api/get',
+          data: {
+            name: 'zs',
+            age: 18
+          },
+          success: function(res) {
+            console.log(res)
+          }
+        })
+      })
+
+      $('#btnPOST').on('click', function() {
+        $.ajax({
+          type: 'POST',
+          url: 'http://127.0.0.1/api/post',
+          data: {
+            bookname: '西游记',
+            author: '吴承恩'
+          },
+          success: function(res) {
+            console.log(res)
+          }
+        })
+      })
+
+      $('#btnDELETE').on('click', function() {
+        $.ajax({
+          type: 'DELETE',
+          url: 'http://127.0.0.1/api/delete',
+          data: {
+            bookname: '水浒传',
+            author: '施耐庵'
+          },
+          success: function(res) {
+            console.log(res)
+          }
+        })
+      })
+
+      $('#btnJSONP').on('click', function() {
+        $.ajax({
+          type: 'GET',
+          url: 'http://127.0.0.1/api/jsonp',
+          dataType: 'jsonp', // 表示发起 jsonp 请求
+          success: function(res) {
+            console.log(res)
+          }
+        })
+      })
+    })
+  </script>
+</body>
+</html>
