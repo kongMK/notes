@@ -227,7 +227,7 @@ git reset --hard <CommitID>
 HTTPS
 ```powershell
 # github 远程仓库进行关联
-git remote add origin https://github.com/kongMK/proto.git
+git remote add origin 仓库地址
 
 # -M 移动/重命名分支，即使目标存在
 git branch -M main
@@ -247,10 +247,10 @@ SSH key
 > 2. id_rsa.pub 公钥文件，需要配置到Github
 
 > * 生成SSH key  
-> id_rsa 和 id_rsa.pub 存放在 C:\Users\用户名文件\\.ssh目录  
+> id_rsa 和 id_rsa.pub 存放在 C:\Users\用户名文件\.ssh目录  
 ```powershell
 # 生成SSH key
-ssh-keygen -t rsa -b 4096 -C "github邮箱"
+ssh-keygen -t rsa -b 4096 -C "注册的github邮箱"
 ```
 
 > * 配置SSH key
@@ -258,13 +258,13 @@ ssh-keygen -t rsa -b 4096 -C "github邮箱"
   粘贴到Github头像 -> Settings -> SSH and GPK Keys -> New SSH Key -> key
 ```powershell
 # 验证 github 的 SSH key 配置是否成功
-ssh -T git@github.com
+ssh -T git@ssh.github.com
 ```
 
 * SSH 同步远程仓库
 ```powershell
 # 与 github 远程仓库关联
-git remote add origin git@github.com:kongMK/proto_ssh.git
+git remote add origin 仓库地址
 # -M 移动/重命名分支，即使目标存在
 git branch -M main
 # 同步本地仓库到远程仓库
