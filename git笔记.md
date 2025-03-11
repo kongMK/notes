@@ -247,7 +247,7 @@ SSH key
 > 2. id_rsa.pub 公钥文件，需要配置到Github
 
 > * 生成SSH key  
-> id_rsa 和 id_rsa.pub 存放在 C:\Users\用户名文件\.ssh目录  
+> id_rsa 和 id_rsa.pub 存放在 C:\Users\用户名文件\\.ssh目录  
 ```powershell
 # 生成SSH key
 ssh-keygen -t rsa -b 4096 -C "注册的github邮箱"
